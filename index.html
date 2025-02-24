@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library Management</title>
+    <style>
+        /* General Page Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Heading Styling */
+h1 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Navigation Links */
+a {
+    text-decoration: none;
+    color: white;
+    background-color: #007BFF;
+    padding: 10px 20px;
+    margin: 5px;
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 1.2rem;
+}
+
+a:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+    
+</head>
+<body>
+    <h1>Welcome to the Library</h1>
+    <a href="{{ url_for('view_books') }}">View Books</a> |
+    <a href="{{ url_for('view_members') }}">View view members</a> | 
+     <a href="{{ url_for('view_issued_books') }}">View Issued Books</a>
+</body>
+</html>

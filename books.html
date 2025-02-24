@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Books</title>
+    <style>
+        /* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Page Heading */
+h1, h2 {
+    color: #007BFF;
+    margin-bottom: 15px;
+}
+
+/* Search Form */
+form {
+    margin: 20px auto;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-right: 10px;
+}
+
+input:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+/* Button Styling */
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Book List Styling */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px auto;
+    width: 60%;
+}
+
+li {
+    background: white;
+    padding: 15px;
+    margin: 8px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1.1rem;
+}
+
+/* Add Book Form */
+form[action="{{ url_for('add_book') }}"] {
+    width: 50%;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+    </style>
+</head>
+<body>
+    <h1>Books List</h1>
+
+    <form method="POST">
+        <input type="text" name="search" placeholder="Search by Title or Author">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul>
+        {% for book in books %}
+            <li>{{ book["title"] }} by {{ book["author"] }} (Stock: {{ book["stock"] }})</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Add a New Book</h2>
+    <form method="POST" action="{{ url_for('add_book') }}">
+        <input type="text" name="title" placeholder="Book Title" required>
+        <input type="text" name="author" placeholder="Author" required>
+        <input type="number" name="stock" placeholder="Stock" required>
+        <button type="submit">Add Book</button>
+    </form>
+</body>
+</html>

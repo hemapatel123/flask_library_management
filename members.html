@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Members</title>
+    <style>
+        /* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Page Heading */
+h1, h2 {
+    color: #007BFF;
+    margin-bottom: 15px;
+}
+
+/* Table Styling */
+table {
+    width: 60%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: #007BFF;
+    color: white;
+}
+
+td {
+    background: #f1f1f1;
+}
+
+tr:hover td {
+    background: #e9ecef;
+}
+
+/* Add Member Form */
+form {
+    width: 50%;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-right: 10px;
+}
+
+input:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+/* Button Styling */
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Library Members</h1>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Outstanding Debt</th>
+        </tr>
+        {% for member in members %}
+        <tr>
+            <td>{{ member["name"] }}</td>
+            <td>0 {{ member["outstanding_dept"] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>Add Member</h2>
+    <form action="/add_member" method="POST">
+        <input type="text" name="name" placeholder="Member Name" required>
+        <button type="submit">Add Member</button>
+    </form>
+</body>
+</html>
